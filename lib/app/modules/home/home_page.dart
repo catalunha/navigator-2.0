@@ -89,6 +89,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
+// Minhas alterações
   MaterialPageRoute? generateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case '/':

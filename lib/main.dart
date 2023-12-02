@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:navigator2_setstate/app/modules/home/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:navigator2_setstate/app/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Material App',
-      home: HomePage(),
+      initialRoute: '/',
+      onGenerateRoute: initialOnGenerateRoute,
     );
   }
 }

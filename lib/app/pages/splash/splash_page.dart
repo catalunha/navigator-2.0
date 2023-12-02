@@ -8,17 +8,26 @@ class SplashPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<bool> splash = ref.watch(splashProvider);
+    final splash = ref.watch(splashControllerProvider);
     ref.listen<AsyncValue<bool>>(
-      splashProvider,
-      (previous, next) {
-        next.whenData(
-          (value) {
-            print('passei');
-            return Navigator.of(context).pushReplacementNamed(
-              InitialRoutes.login,
-            );
+      splashControllerProvider,
+      (_, next) {
+        next.when(
+          data: (data) {
+            switch (data) {
+              case true:
+                Navigator.of(context).pushReplacementNamed(RootRoutes.home);
+                break;
+              case false:
+                Navigator.of(context).pushReplacementNamed(RootRoutes.login);
+                break;
+            }
           },
+          error: (e, s) {
+            Navigator.of(context)
+                .pushReplacementNamed(RootRoutes.internalServerError500);
+          },
+          loading: () {},
         );
       },
     );
@@ -33,16 +42,15 @@ class SplashPage extends ConsumerWidget {
           child: Text('Oops...Um erro apareceu'),
         ),
         loading: () => const Center(
-          child: CircularProgressIndicator(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Preparando ambiente ...'),
+              CircularProgressIndicator(),
+            ],
+          ),
         ),
       ),
     );
-
-// return Center(child: switch(splash){
-//       AsyncData(:final value) => const Text('Oops...Um erro apareceu'),
-//       AsyncError() => const Text('Oops...Um erro apareceu'),
-//       _ => const CircularProgressIndicator(),
-//     },
-// );
   }
 }

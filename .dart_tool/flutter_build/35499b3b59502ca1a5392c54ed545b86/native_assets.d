@@ -1,1 +1,0 @@
- /home/catalunha/myapp/navigator-2.0/.dart_tool/flutter_build/35499b3b59502ca1a5392c54ed545b86/native_assets.yaml: 

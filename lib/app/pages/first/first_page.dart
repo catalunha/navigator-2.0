@@ -18,7 +18,7 @@ class FirstPage extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () =>
-                  Navigator.of(context).pushNamed(HomeRoutes.first),
+                  Navigator.of(context).pushNamed(HomeRoutes.firstInner),
               child: const Text(
                 'Ir para uma proxima pagina, neste caso outra "First"',
               ),

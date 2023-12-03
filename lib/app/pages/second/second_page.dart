@@ -17,10 +17,10 @@ class SecondPage extends StatelessWidget {
           const Text('Second Page'),
           Center(
             child: ElevatedButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(HomeRoutes.third),
+                onPressed: () => Navigator.of(context)
+                    .pushNamed(HomeRoutes.secondInner, arguments: '3th'),
                 child: const Text(
-                    'Ir para outra proxima, neste caso outra "Third"')),
+                    'Ir para outra proxima com argumento, neste caso "Third"')),
           )
         ],
       ),

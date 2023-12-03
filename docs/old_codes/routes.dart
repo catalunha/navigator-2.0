@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:navigator2_setstate/app/pages/second_inner/second_inner_page.dart';
 
-import 'pages/first-inner/first_inner_page.dart';
 import 'pages/first/first_page.dart';
 import 'pages/home/home_page.dart';
+import 'pages/home/layouts/home_page_large.dart';
 import 'pages/login/login_page.dart';
 import 'pages/not_found_404/not_found_404.dart';
 import 'pages/second/second_page.dart';
 import 'pages/splash/splash_page.dart';
+import 'pages/third/third_page.dart';
 
 class RootRoutes {
   static const String home = '/home';
@@ -38,46 +38,48 @@ Route<dynamic> rootOnGenerateRoute(RouteSettings settings) {
 
 class HomeRoutes {
   static const String first = '/';
-  static const String firstInner = '/firstInner';
   static const String second = '/second';
-  static const String secondInner = '/secondInner';
+  static const String third = '/third';
 }
 
+// Minhas alterações
 Route? homeOnGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case HomeRoutes.first:
       return CustomPageRoute(page: const FirstPage());
-    case HomeRoutes.firstInner:
-      return CustomPageRoute(
-          page: const FirstInnerPage(), direction: AxisDirection.up);
-
+    // case HomeRoutes.first:
+    //   return PageRouteBuilder(
+    //       pageBuilder: (context, animation, secondaryAnimation) =>
+    //           const FirstPage(),
+    //       transitionsBuilder: (context, animation, secondaryAnimation, child) {
+    //         return child;
+    //       });
     case HomeRoutes.second:
-      return CustomPageRoute(page: const SecondPage());
-    case HomeRoutes.secondInner:
+      return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const SecondPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return child;
+          });
+    case HomeRoutes.third:
       final argu = settings.arguments as String;
-      return CustomPageRoute(
-          page: SecondInnerPage(
-            arg: argu,
-          ),
-          direction: AxisDirection.up);
+      return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => ThirdPage(
+                arg: argu,
+              ),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(0.0, 1.0);
+            const end = Offset.zero;
+            const curve = Curves.ease;
 
-    // return PageRouteBuilder(
-    //     pageBuilder: (context, animation, secondaryAnimation) => ThirdPage(
-    //           arg: argu,
-    //         ),
-    //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-    //       const begin = Offset(0.0, 1.0);
-    //       const end = Offset.zero;
-    //       const curve = Curves.ease;
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-    //       var tween =
-    //           Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-    //       return SlideTransition(
-    //         position: animation.drive(tween),
-    //         child: child,
-    //       );
-    //     });
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          });
     default:
       return MaterialPageRoute(
         builder: (_) => const SizedBox.shrink(),
@@ -142,7 +144,7 @@ MaterialPageRoute? homeOnGenerateRoute(RouteSettings settings) {
     case HomeRoutes.second:
       builder = (_) => const SecondPage();
       break;
-    case HomeRoutes.secondInner:
+    case HomeRoutes.third:
       builder = (_) => const ThirdPage();
       break;
     default:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:navigator2_setstate/app/pages/login/controller/controllers.dart';
 import 'package:navigator2_setstate/app/pages/utils/app_state_status.dart';
-import 'package:navigator2_setstate/app/routes.dart';
+import 'package:navigator2_setstate/app/root_routes.dart';
 
 import '../utils/app_loader.dart';
 import '../utils/app_messages.dart';

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:navigator2_setstate/app/routes.dart';
+import 'package:navigator2_setstate/app/root_routes.dart';
 
-import '../../first/first_page.dart';
-import '../../second/second_page.dart';
+import '../../../home_routes.dart';
 import '../../utils/app_loader.dart';
 import '../../utils/app_messages.dart';
 

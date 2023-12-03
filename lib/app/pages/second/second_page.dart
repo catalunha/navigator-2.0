@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navigator2_setstate/app/routes.dart';
+
+import '../../home_routes.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});

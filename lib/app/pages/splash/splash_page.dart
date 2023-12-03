@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:navigator2_setstate/app/pages/splash/controller/controllers.dart';
-import 'package:navigator2_setstate/app/routes.dart';
+import 'package:navigator2_setstate/app/root_routes.dart';
 
 class SplashPage extends ConsumerWidget {
   const SplashPage({super.key});

@@ -13,7 +13,7 @@ class LoginController extends _$LoginController {
 
   Future<void> access() async {
     state = state.copyWith(status: AppStateStatus.loading);
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     state = state.copyWith(status: AppStateStatus.loaded);
   }
 }

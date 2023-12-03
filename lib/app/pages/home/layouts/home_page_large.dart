@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:navigator2_setstate/app/routes.dart';
 
-import '../../first/first_page.dart';
-import '../../second/second_page.dart';
 import '../../utils/app_loader.dart';
 import '../../utils/app_messages.dart';
 
@@ -42,7 +40,7 @@ class _HomePageLargeState extends ConsumerState<HomePageLarge>
         },
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Navigator 2.0 - SetState - Large'),
+            title: const Text('Home - Large'),
             backgroundColor: Colors.blueGrey,
             leading: IconButton(
               onPressed: () {
@@ -54,11 +52,23 @@ class _HomePageLargeState extends ConsumerState<HomePageLarge>
             ),
             actions: [
               IconButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(RootRoutes.login);
-                  },
-                  icon: const Icon(Icons.exit_to_app_rounded))
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    RootRoutes.login,
+                    (route) => false,
+                  );
+                },
+                icon: const Icon(Icons.exit_to_app_rounded),
+              ),
+              IconButton(
+                onPressed: () {
+                  navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                    HomeRoutes.second,
+                    (route) => false,
+                  );
+                },
+                icon: const Icon(Icons.person),
+              )
             ],
           ),
           body: Row(
@@ -109,24 +119,24 @@ class _HomePageLargeState extends ConsumerState<HomePageLarge>
     );
   }
 
-// Minhas alterações
-  MaterialPageRoute? homeOnGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case HomeRoutes.first:
-        return MaterialPageRoute(
-          builder: (_) => const FirstPage(),
-        );
-      case HomeRoutes.second:
-        return MaterialPageRoute(
-          builder: (_) => const SecondPage(),
-        );
+// // Minhas alterações
+//   MaterialPageRoute? homeOnGenerateRoute(RouteSettings settings) {
+//     switch (settings.name) {
+//       case HomeRoutes.first:
+//         return MaterialPageRoute(
+//           builder: (_) => const FirstPage(),
+//         );
+//       case HomeRoutes.second:
+//         return MaterialPageRoute(
+//           builder: (_) => const SecondPage(),
+//         );
 
-      default:
-        return MaterialPageRoute(
-          builder: (_) => const SizedBox.shrink(),
-        );
-    }
-  }
+//       default:
+//         return MaterialPageRoute(
+//           builder: (_) => const SizedBox.shrink(),
+//         );
+//     }
+//   }
 // // Minhas alterações
 //   MaterialPageRoute? generateRoutes(RouteSettings settings) {
 //     switch (settings.name) {

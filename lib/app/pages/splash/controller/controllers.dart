@@ -19,6 +19,6 @@ part 'controllers.g.dart';
 @riverpod
 Future<bool> splashController(SplashControllerRef ref) async {
   log('SplashController start');
-  await Future.delayed(const Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 1));
   return false;
 }

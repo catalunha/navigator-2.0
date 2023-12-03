@@ -1,16 +1,8 @@
-# navigator2_setstate
+# navigator2
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Caminhando assim turma.
+Qualquer sugestão é bem vinda.
+Ainda estudando algumas partes.
+MarcusBrasizza deu o tom da navegação 2.0
+LeonardoSerrano turbinou muuuito o navegação 2.0 com outros conceitos de pop.
+E eu fiz nada não. Só arrumei algumas coisas para o que eu queria (ainda em construção).

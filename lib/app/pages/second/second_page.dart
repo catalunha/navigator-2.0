@@ -8,19 +8,19 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings Page'),
-        backgroundColor: Colors.blueGrey[700],
+        title: const Text('Second Page'),
+        backgroundColor: Colors.blue,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Settings Page'),
+          const Text('Second Page'),
           Center(
             child: ElevatedButton(
                 onPressed: () =>
-                    Navigator.of(context).pushNamed(HomeRoutes.second),
-                child:
-                    const Text('Ir para proxima, neste caso outra "Settings"')),
+                    Navigator.of(context).pushNamed(HomeRoutes.third),
+                child: const Text(
+                    'Ir para outra proxima, neste caso outra "Third"')),
           )
         ],
       ),

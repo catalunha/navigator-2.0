@@ -26,12 +26,11 @@ class _HomePageSmallState extends ConsumerState<HomePageSmall>
       canPop: false,
       onPopInvoked: (can) {
         if (!navigatorKey.currentState!.canPop()) {
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   const SnackBar(
-          //     content: Text('Tela principal, não pode voltar'),
-          //   ),
-          // );
-          showMessageError(context, 'Tela principal, não pode voltar');
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Tela principal, não pode voltar'),
+            ),
+          );
         }
       },
       child: NavigatorPopHandler(
@@ -43,15 +42,27 @@ class _HomePageSmallState extends ConsumerState<HomePageSmall>
         child: Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
-            title: const Text('Navigator 2.0 - SetState - Small'),
+            title: const Text('Home - Small'),
             backgroundColor: Colors.blueGrey,
             actions: [
               IconButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(RootRoutes.login);
-                  },
-                  icon: const Icon(Icons.exit_to_app_rounded))
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    RootRoutes.login,
+                    (route) => false,
+                  );
+                },
+                icon: const Icon(Icons.exit_to_app_rounded),
+              ),
+              IconButton(
+                onPressed: () {
+                  navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                    HomeRoutes.second,
+                    (route) => false,
+                  );
+                },
+                icon: const Icon(Icons.person),
+              )
             ],
           ),
           drawer: Drawer(
@@ -62,30 +73,20 @@ class _HomePageSmallState extends ConsumerState<HomePageSmall>
                   height: kToolbarHeight,
                 ),
                 ListTile(
-                  title: const Text('User'),
+                  title: const Text('First Page'),
                   onTap: () {
                     navigatorKey.currentState!.pushNamedAndRemoveUntil(
-                      '/',
+                      HomeRoutes.first,
                       (route) => false,
                     );
                     _scaffoldKey.currentState!.closeDrawer();
                   },
                 ),
                 ListTile(
-                  title: const Text('Settings'),
+                  title: const Text('Second Page'),
                   onTap: () {
                     navigatorKey.currentState!.pushNamedAndRemoveUntil(
-                      '/settings',
-                      (route) => false,
-                    );
-                    _scaffoldKey.currentState!.closeDrawer();
-                  },
-                ),
-                ListTile(
-                  title: const Text('Access'),
-                  onTap: () {
-                    navigatorKey.currentState!.pushNamedAndRemoveUntil(
-                      '/access',
+                      HomeRoutes.second,
                       (route) => false,
                     );
                     _scaffoldKey.currentState!.closeDrawer();
@@ -102,24 +103,5 @@ class _HomePageSmallState extends ConsumerState<HomePageSmall>
         ),
       ),
     );
-  }
-
-// Minhas alterações
-  MaterialPageRoute? homeOnGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case HomeRoutes.first:
-        return MaterialPageRoute(
-          builder: (_) => const FirstPage(),
-        );
-      case HomeRoutes.second:
-        return MaterialPageRoute(
-          builder: (_) => const SecondPage(),
-        );
-
-      default:
-        return MaterialPageRoute(
-          builder: (_) => const SizedBox.shrink(),
-        );
-    }
   }
 }

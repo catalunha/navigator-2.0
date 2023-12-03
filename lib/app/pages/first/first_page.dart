@@ -8,19 +8,19 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Page'),
-        backgroundColor: Colors.blueGrey[900],
+        title: const Text('First Page'),
+        backgroundColor: Colors.orange,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('User Page'),
+          const Text('First Page'),
           Center(
             child: ElevatedButton(
               onPressed: () =>
                   Navigator.of(context).pushNamed(HomeRoutes.first),
               child: const Text(
-                'Ir para proxima, neste caso outra "Login"',
+                'Ir para uma proxima pagina, neste caso outra "First"',
               ),
             ),
           ),

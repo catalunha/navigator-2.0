@@ -29,7 +29,10 @@ class _LoginPageState extends ConsumerState<LoginPage>
           break;
         case AppStateStatus.loaded:
           hideLoader(context);
-          Navigator.of(context).pushReplacementNamed(RootRoutes.home);
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            RootRoutes.home,
+            (route) => false,
+          );
           break;
         case AppStateStatus.message:
           break;

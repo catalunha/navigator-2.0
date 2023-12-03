@@ -18,10 +18,16 @@ class SplashPage extends ConsumerWidget {
           data: (data) {
             switch (data) {
               case true:
-                Navigator.of(context).pushReplacementNamed(RootRoutes.home);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  RootRoutes.home,
+                  (route) => false,
+                );
                 break;
               case false:
-                Navigator.of(context).pushReplacementNamed(RootRoutes.login);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  RootRoutes.login,
+                  (route) => false,
+                );
                 break;
             }
           },

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'pages/internal_server_error/internal_server_error_500.dart';
+import 'pages/home/home_page.dart';
+import 'pages/first/first_page.dart';
 import 'pages/login/login_page.dart';
 import 'pages/not_found_404/not_found_404.dart';
+import 'pages/second/second_page.dart';
 import 'pages/splash/splash_page.dart';
 
 class RootRoutes {
   static const String home = '/home';
   static const String login = '/login';
   static const String splash = '/';
-  static const String internalServerError500 = '/internalServerError500';
 }
 
 Route<dynamic> rootOnGenerateRoute(RouteSettings settings) {
@@ -22,10 +23,7 @@ Route<dynamic> rootOnGenerateRoute(RouteSettings settings) {
       builder = (_) => const LoginPage();
       break;
     case RootRoutes.home:
-      builder = (_) => const LoginPage();
-      break;
-    case RootRoutes.internalServerError500:
-      builder = (_) => const InternalServerError500();
+      builder = (_) => const HomePage();
       break;
     default:
       builder = (_) => const NotFound404();
@@ -35,3 +33,27 @@ Route<dynamic> rootOnGenerateRoute(RouteSettings settings) {
     settings: settings,
   );
 }
+
+class HomeRoutes {
+  static const String first = '/first';
+  static const String second = '/second';
+}
+
+// // Minhas alterações
+// MaterialPageRoute? homeOnGenerateRoute(RouteSettings settings) {
+//   WidgetBuilder builder;
+//   switch (settings.name) {
+//     case HomeRoutes.first:
+//       builder = (_) => const FirstPage();
+//       break;
+//     case HomeRoutes.second:
+//       builder = (_) => const SecondPage();
+//       break;
+//     default:
+//       builder = (_) => const SizedBox.shrink();
+//   }
+//   return MaterialPageRoute(
+//     builder: builder,
+//     settings: settings,
+//   );
+// }

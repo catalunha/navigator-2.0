@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:navigator2_setstate/app/routes.dart';
 
-class UserPage extends StatelessWidget {
-  const UserPage({Key? key}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,8 @@ class UserPage extends StatelessWidget {
           const Text('User Page'),
           Center(
             child: ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(HomeRoutes.first),
               child: const Text(
                 'Ir para proxima, neste caso outra "Login"',
               ),

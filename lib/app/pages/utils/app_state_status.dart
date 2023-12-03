@@ -1,4 +1,4 @@
-enum StateStatus {
+enum AppStateStatus {
   initial,
   loading,
   updated,

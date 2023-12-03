@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:navigator2_setstate/app/pages/splash/controller/controllers.dart';
@@ -24,8 +26,7 @@ class SplashPage extends ConsumerWidget {
             }
           },
           error: (e, s) {
-            Navigator.of(context)
-                .pushReplacementNamed(RootRoutes.internalServerError500);
+            log('Erro no Splash. Impossivel continuar');
           },
           loading: () {},
         );
@@ -39,12 +40,18 @@ class SplashPage extends ConsumerWidget {
           );
         },
         error: (error, stacktrace) => const Center(
-          child: Text('Oops...Um erro apareceu'),
+          child: Center(
+            child: Text('Oops...Um erro apareceu'),
+          ),
         ),
         loading: () => const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text('SPLASH'),
+              SizedBox(
+                height: 20,
+              ),
               Text('Preparando ambiente ...'),
               CircularProgressIndicator(),
             ],

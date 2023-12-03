@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../home_routes.dart';
@@ -10,7 +11,8 @@ class FirstInnerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('First Inner Page'),
-        backgroundColor: Colors.yellow,
+        backgroundColor:
+            Colors.primaries[Random().nextInt(Colors.primaries.length)],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
